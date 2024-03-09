@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row col-sm-12 col-md-12 mt-5">
+    <h2 class="mr-auto">Import Requests</h2>
+    <%= link_to 'Import Product', import_product_imports_path, class: "btn btn-primary ml-2 mb-2"%>
+    <%= link_to 'Import InTransite Inventory', import_in_transit_imports_path, class: "btn btn-primary ml-2 mb-2"%>
+    <%= link_to 'Import OnHand Inventory', import_on_hand_imports_path, class: "btn btn-primary ml-2 mb-2"%>
+  </div>
+  <div class="row">
+    <main class="col-sm-12 col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Import Request For</th>
+              <th>Current Status</th>
+              <th>Desciption</th>
+              <th>ExtractAt</th>
+              <th>Requested At</th>
+              <th>Error Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @imports.each do |imp|%>
+              <tr>
+                <td><%= imp.import_for %></td>
+                <td><%= imp.state %></td>
+                <td><%= imp.message %></td>
+                <td><%= imp.extract_time ? imp.extract_time.strftime("%m/%d/%Y at %I:%M%p") : 'N/A' %></td>
+                <td><%= imp.created_at.strftime("%m/%d/%Y at %I:%M%p") %></td>
+                <td><%= imp.error_message %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag    'handsontable.full' %>
+<%= javascript_include_tag 'csv_import' %>
+
+<div class="container-fluid">
+  <div class="row col-sm-12 col-md-12 mt-5">
+    <h2 class="mr-auto">Import in transit Inventory</h2>
+  </div>
+  <%= render partial: 'import_inventory', locals: { import_for: ImportRequest::IMPORT_FOR[:in_transit]} %>
+</div>
+
+<br>
+<div id="import_file_rows"></div>
